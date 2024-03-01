@@ -1,0 +1,6 @@
+#!/bin/bash
+30 16 * * * echo "Daily file from System1" > ~/monika_system1/daily_file.txt
+
+openssl dgst -sha256 -sign ~/monika_system1/private_key.pem -out ~/monika_system1/daily_file.sig ~/monika_system1/daily_file.txt
+scp ~/monika_system1/daily_file.txt aaysha@192.168.210.9:~/monika_system2/
+scp ~/monika_system1/daily_file.sig aaysha@192.168.210.9:~/monika_system2/
